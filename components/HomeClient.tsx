@@ -1,11 +1,65 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
-import Image from "next/image";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import Image, { StaticImageData } from "next/image";
 import logoImage from "./Icon/WhatsApp Image 2026-04-08 at 01.37.13.jpeg";
+import abbImage from "./Abb/WhatsApp Image 2026-04-14 at 12.36.53.jpeg";
+import portableImageA from "./Portable/WhatsApp Image 2026-04-11 at 19.49.31.jpeg";
+import portableImageB from "./Portable/WhatsApp Image 2026-04-11 at 19.49.29.jpeg";
+import teisonImageA from "./Teison/WhatsApp Image 2026-04-11 at 19.49.31.jpeg";
+import teisonImageB from "./Teison/WhatsApp Image 2026-04-11 at 19.49.28.jpeg";
+import spcImage from "./Spc/WhatsApp Image 2026-04-13 at 22.33.28.jpeg";
+
+const GALLERY_ITEMS: {
+  src: StaticImageData;
+  title: string;
+  description: string;
+  alt: string;
+}[] = [
+  {
+    src: abbImage,
+    title: "ABB Wallbox - Bandung",
+    description: "Instalasi wallbox rumah tinggal dengan jalur kabel tertutup rapi.",
+    alt: "Instalasi ABB wallbox di area carport rumah",
+  },
+  {
+    src: portableImageA,
+    title: "Portable Charger - Bekasi",
+    description: "Setup portable charger lengkap dengan proteksi listrik dan grounding.",
+    alt: "Pemasangan portable charger EV di rumah",
+  },
+  {
+    src: teisonImageA,
+    title: "Teison Charger - Jakarta",
+    description: "Commissioning unit charger dengan validasi arus dan keamanan panel.",
+    alt: "Charger Teison terpasang di dinding parkiran",
+  },
+  {
+    src: spcImage,
+    title: "SPC Charger - Surabaya",
+    description: "Finishing instalasi dengan box MCB dan conduit yang minim bongkar.",
+    alt: "Pemasangan charger SPC dengan jalur kabel conduit",
+  },
+  {
+    src: teisonImageB,
+    title: "Teison Home Setup - Depok",
+    description: "Integrasi charger dengan titik listrik eksisting untuk pemakaian harian.",
+    alt: "Setup charger mobil listrik Teison untuk rumah",
+  },
+  {
+    src: portableImageB,
+    title: "Portable Point - Tangerang",
+    description: "Instalasi socket charging outdoor dengan pelindung waterproof.",
+    alt: "Portable charging point di area luar rumah",
+  },
+];
 
 export default function HomeClient() {
   const [message, setMessage] = useState("");
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isPageVisible, setIsPageVisible] = useState(true);
+  const touchStartX = useRef<number | null>(null);
 
   const services = [
     {
@@ -81,6 +135,29 @@ export default function HomeClient() {
   ];
 
   useEffect(() => {
+    const onVisibilityChange = () => {
+      setIsPageVisible(!document.hidden);
+    };
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isHovered || !isPageVisible) {
+      return;
+    }
+
+    const id = window.setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % GALLERY_ITEMS.length);
+    }, 4000);
+
+    return () => window.clearInterval(id);
+  }, [isHovered, isPageVisible]);
+
+  useEffect(() => {
     const reveals = document.querySelectorAll<HTMLElement>(".reveal");
 
     const observer = new IntersectionObserver(
@@ -126,6 +203,43 @@ export default function HomeClient() {
 
     setMessage(`Terima kasih, ${name || "Pelanggan"}. Mengarahkan ke WhatsApp...`);
     event.currentTarget.reset();
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % GALLERY_ITEMS.length);
+  };
+
+  const onTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const onTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (touchStartX.current === null) {
+      return;
+    }
+
+    const endX = event.changedTouches[0]?.clientX ?? touchStartX.current;
+    const deltaX = touchStartX.current - endX;
+    touchStartX.current = null;
+
+    if (Math.abs(deltaX) < 45) {
+      return;
+    }
+
+    if (deltaX > 0) {
+      nextSlide();
+      return;
+    }
+
+    prevSlide();
   };
 
   return (
@@ -221,6 +335,11 @@ export default function HomeClient() {
               <span className="trust-chip">Tangerang</span>
               <span className="trust-chip">Depok</span>
               <span className="trust-chip">Bekasi</span>
+            </div>
+            <div className="trust-proof" aria-label="Keunggulan dan kepatuhan teknis">
+              <span className="proof-badge">Teknisi Bersertifikat K3</span>
+              <span className="proof-badge">SOP Instalasi Berstandar</span>
+              <span className="proof-badge">Garansi Tertulis 1 Tahun</span>
             </div>
           </div>
         </section>
@@ -349,7 +468,7 @@ export default function HomeClient() {
                   <li>Kabel feeder 3x6</li>
                   <li>Ground rod 1,5 meter</li>
                   <li>Stop kontak single socket outbow waterproof</li>
-                  <li>Pipa conduit dan aksesoris</li>
+                  <li>Pipa conduif dan aksesoris</li>
                 </ul>
               </article>
             </div>
@@ -365,6 +484,60 @@ export default function HomeClient() {
             <div className="section-head reveal">
               <p className="eyebrow">Portofolio</p>
               <h2>Proyek Instalasi Terbaru</h2>
+            </div>
+            <div
+              className="gallery-shell reveal delay-1"
+              aria-label="Galeri proyek instalasi EV charger"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
+              <div
+                className="gallery-track"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {GALLERY_ITEMS.map((item, index) => (
+                  <figure key={item.title} className="gallery-slide">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      className="gallery-image"
+                      sizes="(max-width: 980px) 100vw, 1140px"
+                      priority={index === 0}
+                      placeholder="blur"
+                    />
+                    <figcaption className="gallery-caption">
+                      <h3>{item.title}</h3>
+                      <p>{item.description}</p>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+
+              <div className="gallery-controls" aria-label="Kontrol carousel">
+                <button type="button" className="carousel-btn" onClick={prevSlide} aria-label="Slide sebelumnya">
+                  &#8249;
+                </button>
+                <button type="button" className="carousel-btn" onClick={nextSlide} aria-label="Slide berikutnya">
+                  &#8250;
+                </button>
+              </div>
+
+              <div className="gallery-dots" role="tablist" aria-label="Pilih slide galeri">
+                {GALLERY_ITEMS.map((item, index) => (
+                  <button
+                    key={item.title}
+                    type="button"
+                    role="tab"
+                    aria-selected={currentSlide === index}
+                    aria-label={`Slide ${index + 1}: ${item.title}`}
+                    className={`gallery-dot ${currentSlide === index ? "is-active" : ""}`}
+                    onClick={() => goToSlide(index)}
+                  />
+                ))}
+              </div>
             </div>
             <div className="project-grid">
               {portfolios.map((project, index) => (
@@ -424,8 +597,8 @@ export default function HomeClient() {
               <p className="eyebrow">Booking Survey</p>
               <h2>Konsultasi Gratis Sebelum Instalasi</h2>
               <p>
-                Isi formulir berikut untuk mendapatkan estimasi awal. Tim kami akan menghubungi
-                Anda melalui WhatsApp maksimal 24 jam.
+                Isi formulir berikut untuk mendapatkan estimasi biaya awal dan rekomendasi teknis.
+                Tim kami akan menghubungi Anda melalui WhatsApp maksimal 24 jam.
               </p>
             </div>
 
@@ -477,12 +650,12 @@ export default function HomeClient() {
                 <p className="eyebrow">Mulai Sekarang</p>
                 <h2>Siap Pasang Home Charger dengan Aman dan Cepat?</h2>
                 <p className="cta-copy">
-                  Ceritakan kebutuhan kendaraan dan lokasi Anda, tim kami akan menyiapkan solusi
-                  terbaik beserta estimasi biayanya.
+                  Ceritakan kebutuhan kendaraan dan lokasi Anda. Dapatkan estimasi biaya awal
+                  dalam 24 jam dengan rekomendasi teknis yang sesuai kondisi listrik rumah Anda.
                 </p>
               </div>
               <a href="#kontak" className="btn cta-button">
-                Jadwalkan Survey
+                Dapatkan Estimasi 24 Jam
               </a>
             </div>
           </div>
