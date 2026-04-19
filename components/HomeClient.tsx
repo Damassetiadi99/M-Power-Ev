@@ -37,8 +37,8 @@ const GALLERY_ITEMS: {
   {
     src: spcImage,
     title: "SPC Charger - Surabaya",
-    description: "Finishing instalasi dengan box MCB dan conduit yang minim bongkar.",
-    alt: "Pemasangan charger SPC dengan jalur kabel conduit",
+    description: "Finishing instalasi dengan box MCB dan Conduid yang minim bongkar.",
+    alt: "Pemasangan charger SPC dengan jalur kabel Conduid",
   },
   {
     src: teisonImageB,
@@ -392,10 +392,13 @@ export default function HomeClient() {
                 <ul>
                   <li>RCBO</li>
                   <li>Box MCB</li>
-                  <li>Kabel grounding 4 mm</li>
-                  <li>Ground rod 1,5 meter</li>
-                  <li>Stop kontak single socket outbow waterproof</li>
-                  <li>Pipa conduit dan aksesoris</li>
+                  <li>Kabel grounding 4 mm (10 meter)</li>
+                  <li>Ground rod (1,5 meter)</li>
+                  <li>Stop kontak Brocco</li>
+                  <li>Pipa Conduid (5 Batang)</li>
+                  <li>Free Kleman & shock sambung</li>
+                  <li>Fleksible (3 Meter)</li>
+                  <li>Gantungan Charger</li>
                 </ul>
               </article>
 
@@ -403,39 +406,47 @@ export default function HomeClient() {
                 <h3>Grounding</h3>
                 <p className="price">Mulai dari 1 jutaan</p>
                 <ul>
-                  <li>Kabel</li>
-                  <li>Ground rod 1,5 meter</li>
-                  <li>Pipa conduit</li>
+                  <li>Kabel Grounding 4 mm (10 meter)</li>
+                  <li>Ground rod (1,5 meter)</li>
+                  <li>Pipa Conduid</li>
+                  <li>Free Kleman & shock sambung</li>
+                  <li>Fleksible (3 Meter)</li>
                 </ul>
               </article>
 
               <article className="price-card reveal delay-3">
                 <h3>Instalasi Charger</h3>
-                <h3>Paket 1</h3>
+                <h3>Paket 1 Chint</h3>
                 <p className="price">Mulai 2 Jutaan</p>
                 <ul>
-                  <li>RCBO</li>
-                  <li>Box MCB 40A/50A</li>
-                  <li>Kabel grounding 4 mm</li>
-                  <li>Kabel feeder 3x6</li>
-                  <li>Ground rod 1,5 meter</li>
-                  <li>Stop kontak single socket outbow waterproof</li>
-                  <li>Pipa conduit dan aksesoris</li>
+                  <li>RCBO 40A</li>
+                  <li>MCB 40A-50A</li>
+                  <li>Box MCB (6 Group)</li>
+                  <li>Kabel grounding 4 mm (10 Meter)</li>
+                  <li>Ground rod (1,5 meter)</li>
+                  <li>Kabel Tufur 3x6 (3 Meter)</li>
+                  <li>Pipa Conduid</li>
+                  <li>Free Kleman & shock sambung</li>
+                  <li>Fleksible (3 Meter)</li>
                 </ul>
               </article>
 
               <article className="price-card reveal delay-1">
                 <h3>Instalasi Charger</h3>
-                <h3>Paket 2</h3>
+                <h3>Paket 2 Sneider</h3>
                 <p className="price">Mulai 2,6 Juta</p>
                 <ul>
-                  <li>RCBO</li>
-                  <li>Box MCB 40A/50A</li>
-                  <li>Kabel grounding 4 mm</li>
-                  <li>Kabel feeder 3x6</li>
-                  <li>Ground rod 1,5 meter</li>
-                  <li>Stop kontak single socket outbow waterproof</li>
-                  <li>Pipa conduit dan aksesoris</li>
+                  <li>RCBO 40A</li>
+                  <li>MCB 40A</li>
+                  <li>Box MCB (6 Group)</li>
+                  <li>Kabel grounding 4 mm (10 Meter)</li>
+                  <li>Ground rod (1,5 meter)</li>
+                  <li>Kabel Tufur 3x6 (3 Meter)</li>
+                  <li>Pipa Conduid</li>
+                  <li>Free Kleman & shock sambung</li>
+                  <li>Fleksible (3 Meter)</li>
+                  <li>Stop kontak Brocco</li>
+
                 </ul>
               </article>
 
@@ -443,32 +454,40 @@ export default function HomeClient() {
                 <p className="badge">Paling Populer</p>
                 <h3>Instalasi Charger</h3>
                 <h3>Paket All in 1</h3>
-                <p className="price">Mulai 13 Juta</p>
+                <p className="price">Mulai 13,3 Juta</p>
                 <ul>
-                  <li>RCBO</li>
-                  <li>Box MCB 40A/50A</li>
-                  <li>Kabel grounding 4 mm</li>
-                  <li>KWh meter 7.700 VA</li>
-                  <li>Kabel feeder 3x6</li>
-                  <li>Ground rod 1,5 meter</li>
-                  <li>Stop kontak single socket outbow waterproof</li>
-                  <li>Pipa conduit dan aksesoris</li>
+                  <li>Charger SPC (7kW)</li>
+                  <li>KWh meter 7.700 VA (Jalur Udara ) </li>
+                  <li>RCBO 40A</li>
+                  <li>MCB 40A</li>
+                  <li>Box MCB (6 Group)</li>
+                  <li>Kabel grounding 4 mm (10 Meter)</li>
+                  <li>Ground rod (1,5 meter)</li>
+                  <li>Kabel Tufur 3x6 (3 Meter)</li>
+                  <li>Pipa Conduid</li>
+                  <li>Free Kleman & shock sambung</li>
+                  <li>Fleksible (3 Meter)</li>
+                  <li>Stop kontak Brocco</li>
                 </ul>
               </article>
 
               <article className="price-card reveal delay-3">
                 <h3>Instalasi Charger</h3>
                 <h3>Paket All in 2</h3>
-                <p className="price">Mulai 17 Juta</p>
+                <p className="price">Mulai 15,5 Juta</p>
                 <ul>
-                  <li>RCBO</li>
-                  <li>Box MCB 40A/50A</li>
-                  <li>Kabel grounding 4 mm</li>
-                  <li>KWh meter 7.700 VA</li>
-                  <li>Kabel feeder 3x6</li>
-                  <li>Ground rod 1,5 meter</li>
-                  <li>Stop kontak single socket outbow waterproof</li>
-                  <li>Pipa conduif dan aksesoris</li>
+                  <li> Charger Teison (7kw)</li>
+                  <li>KWh meter 7.700 VA (Jalur Udara ) </li>
+                  <li>RCBO 40A</li>
+                  <li>MCB 40A</li>
+                  <li>Box MCB (6 Group)</li>
+                  <li>Kabel grounding 4 mm (10 Meter)</li>
+                  <li>Ground rod (1,5 meter)</li>
+                  <li>Kabel Tufur 3x6 (3 Meter)</li>
+                  <li>Pipa Conduid</li>
+                  <li>Free Kleman & shock sambung</li>
+                  <li>Fleksible (3 Meter)</li>
+                  <li>Stop kontak Brocco</li>
                 </ul>
               </article>
             </div>
