@@ -24,3 +24,8 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw media assets
+components/mp4/
+*.MOV
+*.mov

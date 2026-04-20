@@ -3,12 +3,32 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import logoImage from "./Icon/WhatsApp Image 2026-04-08 at 01.37.13.jpeg";
-import abbImage from "./Abb/WhatsApp Image 2026-04-14 at 12.36.53.jpeg";
-import portableImageA from "./Portable/WhatsApp Image 2026-04-11 at 19.49.31.jpeg";
-import portableImageB from "./Portable/WhatsApp Image 2026-04-11 at 19.49.29.jpeg";
-import teisonImageA from "./Teison/WhatsApp Image 2026-04-11 at 19.49.31.jpeg";
-import teisonImageB from "./Teison/WhatsApp Image 2026-04-11 at 19.49.28.jpeg";
-import spcImage from "./Spc/WhatsApp Image 2026-04-13 at 22.33.28.jpeg";
+import abbImage from "./Abb/IMG_0507.JPG.jpeg";
+import abbImage3 from "./Abb/IMG_0265.JPG.jpeg";
+import abbImage4 from "./Abb/IMG_0434.JPG.jpeg";
+import portableImageA from "./Portable/WhatsApp Image 2026-04-20 at 20.55.57.png";
+import portableImageB from "./Portable/WhatsApp Image 2026-04-20 at 20.57.01.png";
+import teisonImageA from "./Teison/WhatsApp Image 2026-04-20 at 20.30.27.png";
+import teisonImageB from "./Teison/WhatsApp Image 2026-04-20 at 20.31.00.png";
+import teisonImageC from "./Teison/WhatsApp Image 2026-04-20 at 20.35.09.png";
+import teisonImageD from "./Teison/WhatsApp Image 2026-04-20 at 20.39.25.png";
+
+const VIDEO_ITEMS: {
+  src: string;
+  title: string;
+  description: string;
+}[] = [
+  {
+    src: "/videos/video2.mp4",
+    title: "Portable Charger Rumah",
+    description: "Setup portable charger dengan jalur kabel conduid rapi dan box MCB, cocok untuk pengisian harian di rumah.",
+  },
+  {
+    src: "/videos/video3.mp4",
+    title: "Wall Charger",
+    description: "Unit wall charger 7kW terpasang rapi di dinding dengan jalur kabel tertutup dan sistem proteksi listrik terintegrasi.",
+  },
+];
 
 const GALLERY_ITEMS: {
   src: StaticImageData;
@@ -18,9 +38,21 @@ const GALLERY_ITEMS: {
 }[] = [
   {
     src: abbImage,
-    title: "ABB Wallbox - Bandung",
+    title: "ABB Wallbox - Jakarta Selatan",
     description: "Instalasi wallbox rumah tinggal dengan jalur kabel tertutup rapi.",
     alt: "Instalasi ABB wallbox di area carport rumah",
+  },
+  {
+    src: abbImage3,
+    title: "ABB Charger - Jakarta Barat",
+    description: "Unit ABB terpasang rapi dengan jalur kabel conduid dan grounding.",
+    alt: "Charger ABB terpasang di dinding rumah",
+  },
+  {
+    src: abbImage4,
+    title: "ABB Wall Charger - Tangerang",
+    description: "Finishing instalasi ABB dengan box panel dan proteksi RCBO 40A.",
+    alt: "ABB wall charger siap pakai di rumah tinggal",
   },
   {
     src: portableImageA,
@@ -29,34 +61,41 @@ const GALLERY_ITEMS: {
     alt: "Pemasangan portable charger EV di rumah",
   },
   {
-    src: teisonImageA,
-    title: "Teison Charger - Jakarta",
-    description: "Commissioning unit charger dengan validasi arus dan keamanan panel.",
-    alt: "Charger Teison terpasang di dinding parkiran",
-  },
-  {
-    src: spcImage,
-    title: "SPC Charger - Surabaya",
-    description: "Finishing instalasi dengan box MCB dan Conduid yang minim bongkar.",
-    alt: "Pemasangan charger SPC dengan jalur kabel Conduid",
-  },
-  {
-    src: teisonImageB,
-    title: "Teison Home Setup - Depok",
-    description: "Integrasi charger dengan titik listrik eksisting untuk pemakaian harian.",
-    alt: "Setup charger mobil listrik Teison untuk rumah",
-  },
-  {
     src: portableImageB,
     title: "Portable Point - Tangerang",
     description: "Instalasi socket charging outdoor dengan pelindung waterproof.",
     alt: "Portable charging point di area luar rumah",
+  },
+  {
+    src: teisonImageA,
+    title: "Teison Wall Charger - Jakarta",
+    description: "Unit Teison 7kW terpasang dan siap dipakai untuk pengisian harian.",
+    alt: "Wall charger Teison terpasang di dinding",
+  },
+  {
+    src: teisonImageB,
+    title: "Teison Charger Siap Pakai - Depok",
+    description: "Charger Teison dengan jalur kabel rapi dan sistem proteksi terintegrasi.",
+    alt: "Charger Teison siap pakai di rumah tinggal",
+  },
+  {
+    src: teisonImageC,
+    title: "Teison Home Setup - Bogor",
+    description: "Instalasi Teison lengkap dengan box MCB dan grounding, commissioning selesai.",
+    alt: "Setup Teison home charger di Bogor",
+  },
+  {
+    src: teisonImageD,
+    title: "Teison Charger - Bekasi",
+    description: "Unit Teison terpasang pada titik listrik eksisting, siap untuk pengisian EV.",
+    alt: "Charger Teison terpasang dan siap pakai",
   },
 ];
 
 export default function HomeClient() {
   const [message, setMessage] = useState("");
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [visibleCols, setVisibleCols] = useState(3);
   const [isHovered, setIsHovered] = useState(false);
   const [isPageVisible, setIsPageVisible] = useState(true);
   const touchStartX = useRef<number | null>(null);
@@ -100,39 +139,54 @@ export default function HomeClient() {
 
   const portfolios = [
     {
-      title: "Rumah Tinggal - Bandung",
+      title: "Rumah Tinggal - Jakarta Selatan",
       description: "Wallbox 7kW dengan kabel 15m, selesai dalam 1 hari kerja.",
     },
     {
-      title: "Kantor - Jakarta Selatan",
-      description: "4 unit charger 22kW dengan load balancing untuk operasional harian.",
+      title: "Perumahan Cluster - Tangerang Selatan",
+      description: "Instalasi portable charger dengan grounding dan proteksi RCBO di rumah cluster.",
     },
     {
-      title: "Apartemen - Surabaya",
-      description: "Integrasi panel lantai parkir dengan sistem proteksi tambahan.",
+      title: "Komplek Perumahan - Depok",
+      description: "Pemasangan charger di 3 unit rumah dalam satu komplek, jalur kabel conduid rapi.",
     },
   ];
 
   const testimonials = [
     {
       quote:
-        "Timnya responsif, instalasi rapi, dan semua dijelaskan dengan bahasa yang mudah dipahami.",
+        "Timnya responsif, instalasi rapi, dan semua dijelaskan dengan bahasa yang mudah dipahami. Charger langsung bisa dipakai di hari yang sama.",
       name: "Budi Prasetyo",
-      role: "Pemilik EV, Jakarta",
+      role: "Pemilik Rumah Tinggal, Jakarta Selatan",
     },
     {
       quote:
-        "Kami pasang beberapa unit untuk kantor. Prosesnya terstruktur dan minim gangguan operasional.",
-      name: "Nina Kartika",
-      role: "Facility Manager, Bandung",
+        "Pasang di rumah cluster, pengerjaannya cepat dan bersih. Jalur kabelnya rapi banget, tidak merusak tembok.",
+      name: "Dewi Rahayu",
+      role: "Pemilik Rumah, Perumahan Cluster Tangerang Selatan",
     },
     {
       quote:
-        "Kualitas pengerjaan profesional dan after-sales support-nya benar-benar membantu.",
-      name: "Rian Suryana",
-      role: "Pengelola Apartemen, Surabaya",
+        "Awalnya khawatir ribet karena di komplek, ternyata tim M Power EV sudah berpengalaman. Koordinasinya lancar dan hasilnya memuaskan.",
+      name: "Hendra Saputra",
+      role: "Penghuni Komplek Perumahan, Depok",
     },
   ];
+
+  useEffect(() => {
+    const update = () => {
+      if (window.innerWidth < 640) setVisibleCols(1);
+      else if (window.innerWidth < 980) setVisibleCols(2);
+      else setVisibleCols(3);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  useEffect(() => {
+    setCurrentSlide((prev) => Math.min(prev, Math.max(0, GALLERY_ITEMS.length - visibleCols)));
+  }, [visibleCols]);
 
   useEffect(() => {
     const onVisibilityChange = () => {
@@ -150,12 +204,13 @@ export default function HomeClient() {
       return;
     }
 
+    const maxSlide = GALLERY_ITEMS.length - visibleCols;
     const id = window.setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % GALLERY_ITEMS.length);
+      setCurrentSlide((prev) => (prev >= maxSlide ? 0 : prev + 1));
     }, 4000);
 
     return () => window.clearInterval(id);
-  }, [isHovered, isPageVisible]);
+  }, [isHovered, isPageVisible, visibleCols]);
 
   useEffect(() => {
     const reveals = document.querySelectorAll<HTMLElement>(".reveal");
@@ -210,11 +265,13 @@ export default function HomeClient() {
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length);
+    const maxSlide = GALLERY_ITEMS.length - visibleCols;
+    setCurrentSlide((prev) => (prev <= 0 ? maxSlide : prev - 1));
   };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % GALLERY_ITEMS.length);
+    const maxSlide = GALLERY_ITEMS.length - visibleCols;
+    setCurrentSlide((prev) => (prev >= maxSlide ? 0 : prev + 1));
   };
 
   const onTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
@@ -266,6 +323,7 @@ export default function HomeClient() {
             <a href="#layanan">Layanan</a>
             <a href="#paket">Paket</a>
             <a href="#portfolio">Portofolio</a>
+            <a href="#video">Video</a>
             <a href="#faq">FAQ</a>
             <a href="#kontak">Kontak</a>
           </nav>
@@ -296,7 +354,7 @@ export default function HomeClient() {
               </div>
               <div className="hero-stats">
                 <article>
-                  <h3>500+</h3>
+                  <h3>100+</h3>
                   <p>Instalasi selesai</p>
                 </article>
                 <article>
@@ -337,7 +395,7 @@ export default function HomeClient() {
               <span className="trust-chip">Bekasi</span>
             </div>
             <div className="trust-proof" aria-label="Keunggulan dan kepatuhan teknis">
-              <span className="proof-badge">Teknisi Bersertifikat K3</span>
+              <span className="proof-badge">Teknisi Professional dan handal</span>
               <span className="proof-badge">SOP Instalasi Berstandar</span>
               <span className="proof-badge">Garansi Tertulis 1 Tahun</span>
             </div>
@@ -450,11 +508,10 @@ export default function HomeClient() {
                 </ul>
               </article>
 
-              <article className="price-card featured reveal delay-2">
-                <p className="badge">Paling Populer</p>
+              <article className="price-card reveal delay-2">
                 <h3>Instalasi Charger</h3>
                 <h3>Paket All in 1</h3>
-                <p className="price">Mulai 13,3 Juta</p>
+                <p className="price">Mulai 13,5 Juta</p>
                 <ul>
                   <li>Charger SPC (7kW)</li>
                   <li>KWh meter 7.700 VA (Jalur Udara ) </li>
@@ -471,7 +528,8 @@ export default function HomeClient() {
                 </ul>
               </article>
 
-              <article className="price-card reveal delay-3">
+              <article className="price-card featured reveal delay-3">
+                <p className="badge">Paling Populer</p>
                 <h3>Instalasi Charger</h3>
                 <h3>Paket All in 2</h3>
                 <p className="price">Mulai 15,5 Juta</p>
@@ -514,7 +572,7 @@ export default function HomeClient() {
             >
               <div
                 className="gallery-track"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                style={{ transform: `translateX(-${currentSlide * (100 / visibleCols)}%)` }}
               >
                 {GALLERY_ITEMS.map((item, index) => (
                   <figure key={item.title} className="gallery-slide">
@@ -526,6 +584,7 @@ export default function HomeClient() {
                       sizes="(max-width: 980px) 100vw, 1140px"
                       priority={index === 0}
                       placeholder="blur"
+                      quality={100}
                     />
                     <figcaption className="gallery-caption">
                       <h3>{item.title}</h3>
@@ -545,7 +604,7 @@ export default function HomeClient() {
               </div>
 
               <div className="gallery-dots" role="tablist" aria-label="Pilih slide galeri">
-                {GALLERY_ITEMS.map((item, index) => (
+                {GALLERY_ITEMS.slice(0, GALLERY_ITEMS.length - visibleCols + 1).map((item, index) => (
                   <button
                     key={item.title}
                     type="button"
@@ -564,6 +623,37 @@ export default function HomeClient() {
                   <h3>{project.title}</h3>
                   <p>{project.description}</p>
                 </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="video" className="section">
+          <div className="container">
+            <div className="section-head reveal">
+              <p className="eyebrow">Video</p>
+              <h2>Lihat Charger yang Sudah Terpasang</h2>
+            </div>
+            <div className="video-grid">
+              {VIDEO_ITEMS.map((video, index) => (
+                <div key={video.src} className={`video-card reveal delay-${index + 1}`}>
+                  <div className="video-wrapper">
+                    <video
+                      controls
+                      playsInline
+                      preload="metadata"
+                      aria-label={video.title}
+                    >
+                      <source src={video.src} type="video/quicktime" />
+                      <source src={video.src} type="video/mp4" />
+                      Browser Anda tidak mendukung pemutaran video.
+                    </video>
+                  </div>
+                  <div className="video-caption">
+                    <h3>{video.title}</h3>
+                    <p>{video.description}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -684,6 +774,59 @@ export default function HomeClient() {
       <footer className="site-footer">
         <div className="container footer-wrap">
           <p>© 2026 M Power EV. Semua hak dilindungi.</p>
+          <div className="footer-social">
+            <a
+              href="https://www.tiktok.com/@lana.w187?_r=1&_t=ZS-95hBL3Wi642"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok M Power EV"
+              className="social-link"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.75a8.26 8.26 0 0 0 4.84 1.55V6.86a4.85 4.85 0 0 1-1.07-.17z"/>
+              </svg>
+              TikTok
+            </a>
+            <a
+              href="https://www.facebook.com/share/1CpSLskQPk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook M Power EV"
+              className="social-link"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+              Facebook
+            </a>
+            <a
+              href="https://www.instagram.com/mpowerevcharging?igsh=MXJsdGhrYzRsN2phNA=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram M Power EV"
+              className="social-link"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+              Instagram
+            </a>
+            <a
+              href="https://wa.me/6285974737106"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp M Power EV"
+              className="social-link"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.554 4.103 1.523 5.824L.057 23.885a.5.5 0 0 0 .611.61l6.098-1.456A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.523-5.168-1.432l-.361-.216-3.762.899.925-3.682-.236-.373A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+              </svg>
+              WhatsApp
+            </a>
+          </div>
           <a href="#" aria-label="Kembali ke atas">
             Kembali ke atas
           </a>
