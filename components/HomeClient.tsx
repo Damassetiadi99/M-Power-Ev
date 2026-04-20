@@ -19,14 +19,19 @@ const VIDEO_ITEMS: {
   description: string;
 }[] = [
   {
+    src: "/videos/video1.mp4",
+    title: "Wall Charger",
+    description: "Instalasi wall charger 7kW dengan jalur kabel rapi dan sistem proteksi RCBO yang terintegrasi.",
+  },
+  {
     src: "/videos/video2.mp4",
-    title: "Portable Charger Rumah",
-    description: "Setup portable charger dengan jalur kabel conduid rapi dan box MCB, cocok untuk pengisian harian di rumah.",
+    title: "Charger Portable",
+    description: "Setup portable charger lengkap dengan proteksi listrik dan sistem grounding yang aman untuk pengisian harian",
   },
   {
     src: "/videos/video3.mp4",
-    title: "Wall Charger",
-    description: "Unit wall charger 7kW terpasang rapi di dinding dengan jalur kabel tertutup dan sistem proteksi listrik terintegrasi.",
+    title: "Charger Portable",
+    description: "Proses testing lengkap dan aktivasi sistem charging untuk memastikan keamanan dan performa maksimal.",
   },
 ];
 
@@ -311,13 +316,13 @@ export default function HomeClient() {
             <span className="logo-mark" aria-hidden="true">
               <Image
                 src={logoImage}
-                alt="M Power EV Logo"
-                width={32}
-                height={32}
-                style={{ borderRadius: "8px", objectFit: "cover" }}
+                alt=""
+                width={140}
+                height={52}
+                className="logo-image"
+                priority
               />
             </span>
-            <span>M Power EV</span>
           </a>
           <nav className="nav-links">
             <a href="#layanan">Layanan</a>
@@ -354,7 +359,7 @@ export default function HomeClient() {
               </div>
               <div className="hero-stats">
                 <article>
-                  <h3>100+</h3>
+                  <h3>200+</h3>
                   <p>Instalasi selesai</p>
                 </article>
                 <article>
@@ -491,7 +496,7 @@ export default function HomeClient() {
 
               <article className="price-card reveal delay-1">
                 <h3>Instalasi Charger</h3>
-                <h3>Paket 2 Sneider</h3>
+                <h3>Paket 2 Schneider</h3>
                 <p className="price">Mulai 2,6 Juta</p>
                 <ul>
                   <li>RCBO 40A</li>
@@ -644,7 +649,6 @@ export default function HomeClient() {
                       preload="metadata"
                       aria-label={video.title}
                     >
-                      <source src={video.src} type="video/quicktime" />
                       <source src={video.src} type="video/mp4" />
                       Browser Anda tidak mendukung pemutaran video.
                     </video>
