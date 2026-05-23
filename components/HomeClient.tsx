@@ -313,10 +313,10 @@ export default function HomeClient() {
       <header className="site-header">
         <div className="container nav-wrap">
           <a href="#" className="logo" aria-label="M Power EV Home">
-            <span className="logo-mark" aria-hidden="true">
+            <span className="logo-mark">
               <Image
                 src={logoImage}
-                alt=""
+                alt="M Power EV - Jasa Instalasi Charger Mobil Listrik"
                 width={140}
                 height={52}
                 className="logo-image"
@@ -451,7 +451,7 @@ export default function HomeClient() {
             <div className="pricing-grid">
               <article className="price-card reveal delay-1">
                 <h3>Charger Portable</h3>
-                <p className="price">Mulai 2 Jutaan</p>
+                <p className="price">Mulai 1,8 Juta</p>
                 <ul>
                   <li>RCBO</li>
                   <li>Box MCB</li>
@@ -513,13 +513,11 @@ export default function HomeClient() {
                 </ul>
               </article>
 
-              <article className="price-card reveal delay-2">
+              <article className="price-card reveal delay-3">
                 <h3>Instalasi Charger</h3>
-                <h3>Paket All in 1</h3>
-                <p className="price">Mulai 13,5 Juta</p>
+                <h3>Paket 3 Schneider 3 Phase</h3>
+                <p className="price">Mulai 2,6 Juta</p>
                 <ul>
-                  <li>Charger SPC (7kW)</li>
-                  <li>KWh meter 7.700 VA (Jalur Udara ) </li>
                   <li>RCBO 40A</li>
                   <li>MCB 40A</li>
                   <li>Box MCB (6 Group)</li>
@@ -533,13 +531,13 @@ export default function HomeClient() {
                 </ul>
               </article>
 
-              <article className="price-card featured reveal delay-3">
+              <article className="price-card featured reveal delay-2">
                 <p className="badge">Paling Populer</p>
                 <h3>Instalasi Charger</h3>
-                <h3>Paket All in 2</h3>
-                <p className="price">Mulai 15,5 Juta</p>
+                <h3>Paket All in 1</h3>
+                <p className="price">Mulai 13,5 Juta</p>
                 <ul>
-                  <li> Charger Teison (7kw)</li>
+                  <li>Charger Ecovolt (7kW)</li>
                   <li>KWh meter 7.700 VA (Jalur Udara ) </li>
                   <li>RCBO 40A</li>
                   <li>MCB 40A</li>
@@ -550,7 +548,6 @@ export default function HomeClient() {
                   <li>Pipa Conduid</li>
                   <li>Free Kleman & shock sambung</li>
                   <li>Fleksible (3 Meter)</li>
-                  <li>Stop kontak Brocco</li>
                 </ul>
               </article>
             </div>

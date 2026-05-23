@@ -271,7 +271,8 @@
 
   .cards,
   .pricing-grid,
-  .project-grid {
+  .project-grid,
+  .product-grid {
     @apply gap-[18px];
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -296,6 +297,116 @@
   .price-card,
   .project {
     @apply p-6;
+  }
+
+  .product-card {
+    @apply overflow-hidden bg-white border border-[#d5e1ef] rounded-[24px];
+    box-shadow: 0 20px 45px rgba(9, 28, 55, 0.1);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .product-card:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 24px 45px rgba(12, 26, 34, 0.14);
+  }
+
+  .product-media {
+    @apply relative overflow-hidden;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(180deg, #f7fbff, #eaf3ff);
+  }
+
+  .product-image {
+    @apply object-cover;
+  }
+
+  .product-badge {
+    @apply absolute left-4 top-4 z-10 rounded-full px-3 py-1.5 text-[0.72rem] font-bold uppercase tracking-[1px] text-white;
+    background: linear-gradient(135deg, #c21f35, #ef6a3c);
+    box-shadow: 0 10px 24px rgba(194, 31, 53, 0.24);
+  }
+
+  .product-body {
+    @apply p-5;
+  }
+
+  .product-topline,
+  .product-rating-row {
+    @apply flex items-center justify-between gap-3 flex-wrap text-sm text-[#5e6d82];
+  }
+
+  .product-topline {
+    @apply mb-2.5;
+  }
+
+  .product-card h3 {
+    @apply mb-2;
+    font-size: 1.3rem;
+  }
+
+  .product-description,
+  .product-note {
+    @apply text-[#4e6078];
+  }
+
+  .product-rating-row {
+    @apply mt-3 mb-2;
+  }
+
+  .product-rating,
+  .product-stock {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
+  }
+
+  .product-rating {
+    @apply text-[#7a4a00];
+    background: #fff4d9;
+  }
+
+  .product-stock {
+    @apply text-[#0b4f97];
+    background: #eef5ff;
+  }
+
+  .product-price {
+    @apply mt-3 mb-1 text-[1.5rem] font-bold text-[#0f223d];
+    font-family: var(--font-heading, "Segoe UI", sans-serif);
+  }
+
+  .product-note {
+    @apply text-sm;
+  }
+
+  .product-specs {
+    @apply mt-4 grid gap-2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product-spec-item {
+    @apply rounded-[16px] border border-[#dbe7f4] px-3 py-2.5;
+    background: #f8fbff;
+  }
+
+  .product-spec-item span {
+    @apply block text-[0.75rem] uppercase tracking-[1px] text-[#70839b] mb-1;
+  }
+
+  .product-spec-item strong {
+    @apply text-sm text-[#0f223d];
+  }
+
+  .product-features {
+    @apply mt-4 mb-0 pl-[18px] grid gap-2 text-[#4e6078];
+    list-style: disc;
+    list-style-position: outside;
+  }
+
+  .product-actions {
+    @apply mt-5 flex gap-3 flex-wrap;
+  }
+
+  .product-actions .btn {
+    @apply flex-1;
   }
 
   .card h3,
@@ -615,6 +726,7 @@
   .cards,
   .pricing-grid,
   .project-grid,
+  .product-grid,
   .testimonial-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -649,10 +761,15 @@
   .cards,
   .pricing-grid,
   .project-grid,
+  .product-grid,
   .hero-stats,
   .testimonial-grid,
   .process-grid,
   .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-specs {
     grid-template-columns: 1fr;
   }
 
