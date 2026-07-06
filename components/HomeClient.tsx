@@ -533,9 +533,9 @@ export default function HomeClient() {
                 <p className="badge">Paling Populer</p>
                 <h3>Instalasi Charger</h3>
                 <h3>Paket All in 1</h3>
-                <p className="price">Mulai 13,5 Juta</p>
+                <p className="price">Mulai 11,5 Juta</p>
                 <ul>
-                  <li>Charger Ecovolt (7kW)</li>
+                  <li>Charger Flying (7kW)</li>
                   <li>KWh meter 7.700 VA (Jalur Udara ) </li>
                   <li>RCBO 40A</li>
                   <li>MCB 40A</li>
