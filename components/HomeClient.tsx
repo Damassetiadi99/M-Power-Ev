@@ -456,6 +456,7 @@ export default function HomeClient() {
                   <li>RCBO</li>
                   <li>Box MCB</li>
                   <li>Kabel grounding 4 mm (10 meter)</li>
+                  <li>Kabel Tufur 3x2.5 (3 Meter)</li>
                   <li>Ground rod (1,5 meter)</li>
                   <li>Stop kontak Brocco</li>
                   <li>Pipa Conduid (5 Batang)</li>
@@ -533,7 +534,26 @@ export default function HomeClient() {
                 <p className="badge">Paling Populer</p>
                 <h3>Instalasi Charger</h3>
                 <h3>Paket All in 1</h3>
-                <p className="price">Mulai 11,5 Juta</p>
+                <p className="price">Mulai 14 Juta</p>
+                <ul>
+                  <li>Charger Ecovolt (7kW)</li>
+                  <li>KWh meter 7.700 VA (Jalur Udara ) </li>
+                  <li>RCBO 40A</li>
+                  <li>MCB 40A</li>
+                  <li>Box MCB (6 Group)</li>
+                  <li>Kabel grounding 4 mm (10 Meter)</li>
+                  <li>Ground rod (1,5 meter)</li>
+                  <li>Kabel Tufur 3x6 (3 Meter)</li>
+                  <li>Pipa Conduid</li>
+                  <li>Free Kleman & shock sambung</li>
+                  <li>Fleksible (3 Meter)</li>
+                </ul>
+              </article>
+              <article className="price-card featured reveal delay-2">
+                <p className="badge">Sedang Promo</p>
+                <h3>Instalasi Charger</h3>
+                <h3>Paket All in 2</h3>
+                <p className="price">Mulai 12 Juta</p>
                 <ul>
                   <li>Charger Flying (7kW)</li>
                   <li>KWh meter 7.700 VA (Jalur Udara ) </li>
