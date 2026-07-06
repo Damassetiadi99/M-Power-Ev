@@ -508,7 +508,6 @@ export default function HomeClient() {
                   <li>Pipa Conduid</li>
                   <li>Free Kleman & shock sambung</li>
                   <li>Fleksible (3 Meter)</li>
-                  <li>Stop kontak Brocco</li>
 
                 </ul>
               </article>
@@ -527,7 +526,6 @@ export default function HomeClient() {
                   <li>Pipa Conduid</li>
                   <li>Free Kleman & shock sambung</li>
                   <li>Fleksible (3 Meter)</li>
-                  <li>Stop kontak Brocco</li>
                 </ul>
               </article>
 
