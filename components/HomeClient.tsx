@@ -333,7 +333,7 @@ export default function HomeClient() {
             <a href="#kontak">Kontak</a>
           </nav>
           <a className="btn btn-small" href="#kontak">
-            Booking Survey
+            Konsultasi Gratis
           </a>
         </div>
       </header>
@@ -456,7 +456,7 @@ export default function HomeClient() {
                   <li>RCBO</li>
                   <li>Box MCB</li>
                   <li>Kabel grounding 4 mm (10 meter)</li>
-                  <li>Kabel Tufur 3x2.5 (3 Meter)</li>
+                  <li>Kabel Tufur 3x2.5 (5 Meter)</li>
                   <li>Ground rod (1,5 meter)</li>
                   <li>Stop kontak Brocco</li>
                   <li>Pipa Conduid (5 Batang)</li>
@@ -486,7 +486,7 @@ export default function HomeClient() {
                   <li>RCBO 40A</li>
                   <li>MCB 40A-50A</li>
                   <li>Box MCB (6 Group)</li>
-                  <li>Kabel grounding 4 mm (10 Meter)</li>
+                  <li>Kabel grounding 4 mm (8 Meter)</li>
                   <li>Ground rod (1,5 meter)</li>
                   <li>Kabel Tufur 3x6 (3 Meter)</li>
                   <li>Pipa Conduid</li>
@@ -498,7 +498,7 @@ export default function HomeClient() {
               <article className="price-card reveal delay-1">
                 <h3>Instalasi Charger</h3>
                 <h3>Paket 2 Schneider</h3>
-                <p className="price">Mulai 2,6 Juta</p>
+                <p className="price">Mulai 2,5 Juta</p>
                 <ul>
                   <li>RCBO 40A</li>
                   <li>MCB 40A</li>
@@ -516,14 +516,14 @@ export default function HomeClient() {
               <article className="price-card reveal delay-3">
                 <h3>Instalasi Charger</h3>
                 <h3>Paket 3 Schneider 3 Phase</h3>
-                <p className="price">Mulai 2,6 Juta</p>
+                <p className="price">Mulai 2,8 Juta</p>
                 <ul>
                   <li>RCBO 40A</li>
-                  <li>MCB 40A</li>
+                  <li>MCB 25A</li>
                   <li>Box MCB (6 Group)</li>
                   <li>Kabel grounding 4 mm (10 Meter)</li>
                   <li>Ground rod (1,5 meter)</li>
-                  <li>Kabel Tufur 3x6 (3 Meter)</li>
+                  <li>Kabel Tufur 4x6 (3 Meter)</li>
                   <li>Pipa Conduid</li>
                   <li>Free Kleman & shock sambung</li>
                   <li>Fleksible (3 Meter)</li>
@@ -539,9 +539,9 @@ export default function HomeClient() {
                   <li>Charger Ecovolt (7kW)</li>
                   <li>KWh meter 7.700 VA (Jalur Udara ) </li>
                   <li>RCBO 40A</li>
-                  <li>MCB 40A</li>
+                  <li>MCB 40A-50A</li>
                   <li>Box MCB (6 Group)</li>
-                  <li>Kabel grounding 4 mm (10 Meter)</li>
+                  <li>Kabel grounding 4 mm (8 Meter)</li>
                   <li>Ground rod (1,5 meter)</li>
                   <li>Kabel Tufur 3x6 (3 Meter)</li>
                   <li>Pipa Conduid</li>
@@ -558,9 +558,9 @@ export default function HomeClient() {
                   <li>Charger Flying (7kW)</li>
                   <li>KWh meter 7.700 VA (Jalur Udara ) </li>
                   <li>RCBO 40A</li>
-                  <li>MCB 40A</li>
+                  <li>MCB 40A- 50A</li>
                   <li>Box MCB (6 Group)</li>
-                  <li>Kabel grounding 4 mm (10 Meter)</li>
+                  <li>Kabel grounding 4 mm (8 Meter)</li>
                   <li>Ground rod (1,5 meter)</li>
                   <li>Kabel Tufur 3x6 (3 Meter)</li>
                   <li>Pipa Conduid</li>
@@ -762,7 +762,7 @@ export default function HomeClient() {
               </select>
 
               <button type="submit" className="btn">
-                Kirim Permintaan Survey
+                Kirim Form Konsultasi
               </button>
               <p className="form-note" role="status" aria-live="polite">
                 {message}
